@@ -8,8 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var restaurantNames = ["Cafe Deadend", "Home1", "Teakha", "Cafe Loisl", "Petite oyster",
+                           "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery",
+                           "Haigh's Chocolate", "Palomini Espresso", "Upstate", "Traif",
+                           "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves",
+                           "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak",
+                           "CASK Pub and kitchen"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +28,18 @@ class ViewController: UIViewController {
     }
 
 
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return restaurantNames.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "Cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        // Configure the cell...
+        cell.textLabel?.text = restaurantNames[indexPath.row]
+        return cell
+    }
 }
 
