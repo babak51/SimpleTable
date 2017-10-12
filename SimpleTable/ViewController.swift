@@ -17,6 +17,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                            "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak",
                            "CASK Pub and kitchen"]
     
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -39,6 +45,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         // Configure the cell...
         cell.textLabel?.text = restaurantNames[indexPath.row]
+        
+        cell.imageView?.image = UIImage(named: "restaurant")
         return cell
     }
 }
